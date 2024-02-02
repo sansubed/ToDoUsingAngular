@@ -1,10 +1,11 @@
 <!-- app.component.html -->
 <h1>Routing</h1>
-  <div><a routerLink="home">Home</a></div>
-  
- <div> <a routerLink="login">Login</a></div>
+  <div><a routerLink="/home">Home</a></div>
+ <div> <a routerLink="/login/1">Login1</a></div>
+ <div> <a routerLink="/login/2">Login2</a></div>
+ <div> <a routerLink="/login/3">Login3</a></div>
+ <router-outlet></router-outlet>
 
-  <router-outlet></router-outlet>
 
 <div class="todo-list">
     <h1>{{ title }}</h1>
@@ -20,7 +21,7 @@
     </div>
   </div>
 
-  
+ 
   
   
   
