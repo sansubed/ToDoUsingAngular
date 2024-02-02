@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "title": "Study Angular After Work",
+      "completed": true
+    },
+    {
+      "id": "2",
+      "title": "Drink plenty Water",
+      "completed": false
+    },
+    {
+      "id": "3",
+      "title": "Eat Breakfast",
+      "completed": false
+    },
+    {
+      "id": "4",
+      "title": "Study Bhagvat Gita",
+      "completed": true
+    },
+    {
+      "id": "5",
+      "title": "Clean Closet",
+      "completed": false
+    },
+    {
+      "id": "6",
+      "title": "Study for AWS Certification",
+      "completed": false
+    },
+    {
+      "id": "7",
+      "title": "Worship God Everyday",
+      "completed": true
+    }
+  ]
+}
