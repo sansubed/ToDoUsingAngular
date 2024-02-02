@@ -1,4 +1,11 @@
 <!-- app.component.html -->
+<h1>Routing</h1>
+  <div><a routerLink="home">Home</a></div>
+  
+ <div> <a routerLink="login">Login</a></div>
+
+  <router-outlet></router-outlet>
+
 <div class="todo-list">
     <h1>{{ title }}</h1>
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
@@ -12,4 +19,8 @@
       <span *ngIf="!todo.completed">Not Completed</span>
     </div>
   </div>
+
+  
+  
+  
   
