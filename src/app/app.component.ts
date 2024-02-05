@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TodosDataService } from './services/todos-data.service';
 import { ITodoList } from './todo';
 import { Subscription } from 'rxjs';
+
 //Get the data from the database -> it is done through API.
 //Component
 //Service -> Call API here and service has HTTP module inbuilt and is called from server
@@ -26,13 +27,12 @@ export class AppComponent implements OnInit, OnDestroy{
 
   //the constructor injects an instance of service into components
   //this is dependency injection
-  constructor(private toDoData: TodosDataService) {
+  constructor(private toDoData: TodosDataService ) {
     // toDoData.getToDos().subscribe((data) => {
     //   console.warn("data", data);
     //   this.todos = data;
     // });
   }
-
   //called after Angular has initialized the comp
   ngOnInit(): void {
     //subscribes to getToDos method 
@@ -44,6 +44,14 @@ export class AppComponent implements OnInit, OnDestroy{
       console.log("Data from API",data)},
       error:(err) =>this.errorMessage = err,
     })
+  }
+
+  getTasksFromForm(data: ITodoList){
+   data.id = Number(data.id);
+    this.toDoData.saveToDos({id: data.id,title:data.title, completed: false}).subscribe((res)=>{
+      console.warn(res)
+    })
+
   }
 
   //prevents potential memory leaks

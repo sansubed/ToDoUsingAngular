@@ -28,4 +28,9 @@ export class TodosDataService {
 
    //Observable: handles async ops, data may not be available immediately
    //components that subscribe to the observable can react to changes when data is received/error occurs
+ saveToDos(data: ITodoList)
+ {
+  return this.http.post(this.apiUrl,data);
+ }
+
 }

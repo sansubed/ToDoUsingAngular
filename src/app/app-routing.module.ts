@@ -9,6 +9,9 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    // children:[
+    //   {path: 'newcomponentpath', component:NewComponent}
+    // ]
   },
   {
     path: 'login/:id',

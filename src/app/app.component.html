@@ -9,10 +9,14 @@
 
 <div class="todo-list">
     <h1>{{ title }}</h1>
-    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-    <label for="name">Add Tasks: </label>
-    <input type="text" id="name" />
-    <button>Add</button>
+    
+    <form #tasksAddForm="ngForm" (ngSubmit) ="getTasksFromForm(tasksAddForm.value)">
+    <input type="text" name="title" placeholder="add title to your tasks" ngModel required/>
+    <!-- <br> -->
+    <!-- <input type="text" id="completed" placeholder="say true or false"/> -->
+    <button>Add New Task</button>
+  </form>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     <div class="todo-item" *ngFor="let todo of todos">
       <span>ID: {{ todo.id }}</span>
       <span>Title: {{ todo.title }}</span>
@@ -21,6 +25,7 @@
     </div>
   </div>
 
+  
  
   
   

@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component'
-import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,FormsModule
+ 
   ],
   providers: [
     provideClientHydration()
