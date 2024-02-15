@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { NoPageFoundComponent } from './no-page-found/no-page-found.component'
+import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { NoPageFoundComponent } from './no-page-found/no-page-found.component'
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NoPageFoundComponent
+    NoPageFoundComponent,
+    DatePickerComponent,
+   
   ],
   imports: [
     BrowserModule,
