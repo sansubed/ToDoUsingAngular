@@ -1,7 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { TodosDataService } from './services/todos-data.service';
 import { ITodoList } from './todo';
 import { Subscription } from 'rxjs';
+import {NotificationsService, SimpleNotificationsModule} from 'angular2-notifications';
+import { MatDialog } from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //Get the data from the database -> it is done through API.
 //Component
@@ -13,6 +16,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy{
+  @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
   title = 'ToDo List';
   //an array of ITodoList fetched from the API
   todos: ITodoList[] =[];
@@ -27,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   //the constructor injects an instance of service into components
   //this is dependency injection
-  constructor(private toDoData: TodosDataService ) {
+  constructor(private toDoData: TodosDataService, private service :NotificationsService, public dialog: MatDialog ) {
     // toDoData.getToDos().subscribe((data) => {
     //   console.warn("data", data);
     //   this.todos = data;
@@ -54,11 +58,51 @@ export class AppComponent implements OnInit, OnDestroy{
 
   }
 
+  //pass data from this comp to child comp
+  digit:number=1;
+  incrementNumber():number
+  {
+    return this.digit ++;
+  }
+  decrementNumber(): number
+  {
+    return this.digit --;
+  }
+
+  //pass data from child to the parnet
+  updateData(item:string)
+  {
+    console.warn(item);
+  }
+
+
   //prevents potential memory leaks
   ngOnDestroy(): void {
    this.subscription.unsubscribe();
   }
+
+  selectedOption:any;
+  changeServiceOptions:string[]=['This meter needs to be switched to a new service','This service is not supposed to be on this account - Set inactive and do not bill'];
   
+
+  onInfo(message: string): void {
+    this.service.info('Info', 'This is a SO order', { //if you want to show the message from the html side just type messge here with no '' in place of the 'This is a SO order' 
+      //Reference:info(title?: any, content?: any, override?: any): Notification;
+      position: ['bottom', 'right'],
+      timeOut: 2000,
+      showProgressBar: true,
+      pauseOnHover: true,
+      clickToClose: true
+    });
+  }
+
+  onInfoAlternative():void
+  {
+    this.dialog.open(this.dialogTemplate,{ //open(componentOrTemplate: any, config?: MatDialogConfig): MatDialogRef<any>
+      width: '250px',
+    });
+  }
+
 
 }
 

@@ -1,4 +1,19 @@
+
+<p>Using Angular Material Radio Buttons</p>
+<mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption">
+  <div *ngFor="let item of changeServiceOptions">
+    <mat-radio-button [value]="item">{{item}}</mat-radio-button>
+  </div>
+</mat-radio-group>
+<p>This is the test</p>
+<!-- <mat-radio-button (click)="event$">This service is not supposed to be on this account - Set inactive and do not bill</mat-radio-button> -->
 <!-- app.component.html -->
+<p>From Parent to Child</p>
+<app-child [data]="digit" (updateDataEvent)="updateData($event)"></app-child>
+<button (click)="incrementNumber()">+</button>
+<button (click)="decrementNumber()">-</button>
+
+<p>From Child To Parent</p>
 
 
 <app-date-picker></app-date-picker>
@@ -29,10 +44,54 @@
     </div>
   </div>
 
-  <app-date-picker></app-date-picker>
 
+  <button (click)="onInfo('This works')">This works</button>
+  <br>
+  <mat-radio-button (click)="onInfoAlternative()">Cancel this service</mat-radio-button>
+ <simple-notifications></simple-notifications>
   
- 
+ <ng-template #dialogTemplate let-dialogRef>
+  <h1 mat-dialog-title>Info</h1>
+  <div mat-dialog-content>
+    <!-- Dialog content goes here -->
+    <p>This is the content of the dialog.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Close</button>
+  </div>
+</ng-template>
   
-  
-  
+
+<!-- openPopup(popupTemplate: any): void {
+    this.dialog.open(popupTemplate, {
+      width: '250px'
+    });
+  }
+
+<ng-template #popupTemplate let-dialogRef="dialogRef">
+    <div class="dialog-content">
+      <h2 mat-dialog-title>Info!</h2>
+      <mat-dialog-content>
+        This action will not put the meter back into inventory - Use a SO to
+        complete that task.
+      </mat-dialog-content>
+    </div>
+    <div class="dialog-actions">
+      <button mat-button (click)="dialogRef.close()">Close</button>
+    </div>
+  </ng-template>
+
+.dialog-content {
+  padding: 24px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+
+
+
+-->
